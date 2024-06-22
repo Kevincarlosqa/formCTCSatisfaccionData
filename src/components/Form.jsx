@@ -2,30 +2,27 @@
 import axios from "axios";
 import { useRef, useState, useEffect } from "react";
 import RatingSelector from "./RatingSelector";
-import CheckboxGroup from "./CheckboxGroup";
 import Lottie from "lottie-react";
 import check from "../images/check.json";
 import Select from "./Select";
 import InputField from "./InputField";
+import RadioGroup from "./RadioGroup";
 
 function Form() {
   const [formData, setFormData] = useState({
-    nombre_apellido: "",
-    nombre_colegio: "",
-    grado_seccion: "",
-    profesor: "",
-    instrucciones_comprensibles: "",
-    comodidad_preguntas_estudiantes: "",
-    profesor_creatividad: "",
-    colaboracion_profesor: "",
-    problemas_tecnicos: "",
-    otros_problemas_tecnicos: "",
-    eficiencia_solucion_problemas_tecnicos: "",
-    gusto_de_clases: "",
-    mejoras_clases: "",
-    satisfaccion_ia: "",
+    nombre_stakeholder: "",
+    quarter_year: "",
+    tipo_entrega: "",
+    nombre_entregable: "",
+    area: "",
+    data_quality: "",
+    data_business: "",
+    ces: "",
+    otd: "",
+    comunicacion: "",
+    comentarios_generales: "",
+    avg_rating: "",
     nps: "",
-    csat: "",
     projectId: 19,
   });
   const [currentPage, setCurrentPage] = useState(0);
@@ -60,7 +57,7 @@ function Form() {
     try {
       const response = await axios.post(
         //DESCOMENTAR SOLO EL PRIMERO PARA PRODUCCION
-        "api/v1/db/data/v1/crack_sheets/seguimiento_quincenal",
+        "api/v1/db/data/v1/crack_sheets/satisfaccion_data",
         // "http://localhost:8010/proxy",
         formData,
         {
@@ -74,7 +71,7 @@ function Form() {
       );
       console.log(response.data);
       setSuccessMessage(
-        `¡Gracias por tus respuestas, nos ayudarán a entender cómo podemos mejorar en este proceso de enseñanza!`
+        `¡Gracias por tus respuestas! Tu opinión es muy valiosa para nosotros y nos ayudará a mejorar continuamente los procesos en el Team de Data. Apreciamos tu tiempo y esfuerzo al completar esta encuesta.`
       );
       setErrorMessage("");
     } catch (error) {
@@ -83,191 +80,203 @@ function Form() {
     }
   };
 
-  const nombreColegioOptions = [
+  const quarterYearOptions = [
     {
-      label: "I.E. Normal Superior De La Presentación",
-      value: "I.E. Normal Superior De La Presentación",
+      label: "Q1 - 2023",
+      value: "Q1 - 2023",
+    },
+    {
+      label: "Q2 - 2023",
+      value: "Q2 - 2023",
+    },
+    {
+      label: "Q3 - 2023",
+      value: "Q3 - 2023",
+    },
+    {
+      label: "Q4 - 2023",
+      value: "Q4 - 2023",
+    },
+    {
+      label: "Q1 - 2024",
+      value: "Q1 - 2024",
     },
   ];
-  const problemasTecnicosOptions = [
+  const tipoEntregaOptions = [
     {
-      label: "Conexión a internet lenta o inestable",
-      value: "Conexión a internet lenta o inestable",
+      label: "Query",
+      value: "Query",
     },
     {
-      label: "Problemas con la plataforma Zoom",
-      value: "Problemas con la plataforma Zoom",
+      label: "Dashboard",
+      value: "Dashboard",
+    },
+  ];
+  const areaOptions = [
+    {
+      label: "Operaciones",
+      value: "Operaciones",
     },
     {
-      label: "Micrófono o cámara no funcionan",
-      value: "Micrófono o cámara no funcionan",
+      label: "Calidad LX",
+      value: "Calidad LX",
     },
     {
-      label: "Problemas de audio o sonido distorsionado",
-      value: "Problemas de audio o sonido distorsionado",
+      label: "Producto",
+      value: "Producto",
+    },
+  ];
+  const otdOptions = [
+    {
+      label: "Si",
+      value: "Si",
     },
     {
-      label: "No hubieron problemas técnicos",
-      value: "No hubieron problemas técnicos",
-    },
-    {
-      label: "Otro",
-      value: "Otro",
+      label: "No",
+      value: "No",
     },
   ];
 
   const pages = [
     [
       <InputField
-        key="nombre_apellido"
-        label="Ingrese su nombre y apellido"
-        name="nombre_apellido"
-        value={formData.nombre_apellido}
+        key="nombre_stakeholder"
+        label="Ingrese su Nombre y Apellido"
+        name="nombre_stakeholder"
+        value={formData.nombre_stakeholder}
         onChange={handleChange}
         placeholder="Ingrese su Nombre Completo"
-        error={errors.nombre_apellido}
+        error={errors.nombre_stakeholder}
       />,
       <Select
-        key="nombre_colegio"
-        label="Nombre del Colegio"
-        name="nombre_colegio"
-        options={nombreColegioOptions}
-        value={formData.nombre_colegio}
+        key="quarter_year"
+        label="Quarter - Year"
+        name="quarter_year"
+        options={quarterYearOptions}
+        value={formData.quarter_year}
         onChange={handleChange}
-        placeholder="Seleccione su Institución Educativa"
+        placeholder=""
         isOptional={false}
-        error={errors.nombre_colegio}
+        error={errors.quarter_year}
       />,
-      <InputField
-        key="grado_seccion"
-        label="Grado y Sección"
-        name="grado_seccion"
-        value={formData.grado_seccion}
+      <Select
+        key="tipo_entrega"
+        label="Tipo de Entrega"
+        name="tipo_entrega"
+        options={tipoEntregaOptions}
+        value={formData.tipo_entrega}
         onChange={handleChange}
-        placeholder="Ingrese su Grado y Sección"
-        error={errors.grado_seccion}
-      />,
-      <InputField
-        key="profesor"
-        label="Nombre del/la profesor(a) CTC"
-        name="profesor"
-        value={formData.profesor}
-        onChange={handleChange}
-        placeholder="Ingrese el Nombre del/la profesor(a) CTC"
+        placeholder="Seleccione el tipo de Entrega"
         isOptional={false}
-        error={errors.profesor}
+        error={errors.tipo_entrega}
       />,
-      <RatingSelector
-        start={1}
-        end={5}
-        label="En una escala del 1 al 5, ¿qué tan claras y comprensibles son las instrucciones proporcionadas por el/la profesor(a) CTC?"
-        colorType="default"
-        selectedValue={String(formData.instrucciones_comprensibles || 0)}
+      <InputField
+        key="nombre_entregable"
+        label="Nombre de la Entrega"
+        name="nombre_entregable"
+        value={formData.nombre_entregable}
         onChange={handleChange}
-        error={errors.instrucciones_comprensibles}
-        name="instrucciones_comprensibles"
+        placeholder="Ingrese el Nombre del Entregable"
+        error={errors.nombre_entregable}
       />,
-      <RatingSelector
-        start={1}
-        end={5}
-        label="En una escala del 1 al 5, ¿qué tan cómodos se sienten los estudiantes al hacer preguntas al/la profesor(a) CTC?"
-        colorType="default"
-        selectedValue={String(formData.comodidad_preguntas_estudiantes || 0)}
+      <Select
+        key="area"
+        label="Escoja su Area"
+        name="area"
+        options={areaOptions}
+        value={formData.area}
         onChange={handleChange}
-        error={errors.comodidad_preguntas_estudiantes}
-        name="comodidad_preguntas_estudiantes"
-      />,
-      <RatingSelector
-        start={1}
-        end={5}
-        label="En una escala del 1 al 5, ¿qué tan creativo(a) es el/la profesor(a) CTC para mantener a los estudiantes motivados e interesados?"
-        colorType="default"
-        selectedValue={String(formData.profesor_creatividad || 0)}
-        onChange={handleChange}
-        error={errors.profesor_creatividad}
-        name="profesor_creatividad"
-      />,
-      <RatingSelector
-        start={1}
-        end={5}
-        label="En una escala del 1 al 5, ¿qué tan buena es la colaboración entre usted y el/la profesor(a) CTC?"
-        colorType="default"
-        selectedValue={String(formData.colaboracion_profesor || 0)}
-        onChange={handleChange}
-        error={errors.colaboracion_profesor}
-        name="colaboracion_profesor"
-      />,
-      <CheckboxGroup
-        label="En las últimas 2 semanas, ¿qué problemas técnicos surgieron durante las clases? Marque todas las que apliquen."
-        name="problemas_tecnicos"
-        options={problemasTecnicosOptions}
-        selectedValues={
-          formData.problemas_tecnicos
-            ? formData.problemas_tecnicos.split(",")
-            : []
-        }
-        onChange={handleChange}
-        maxSelections={6}
-        error={errors.problemas_tecnicos}
+        placeholder="Seleccione su Area"
         isOptional={false}
-      />,
-      <InputField
-        key="otros_problemas_tecnicos"
-        label="Si marcaste Otro especifica que problemas técnicos surgieron"
-        name="otros_problemas_tecnicos"
-        value={formData.otros_problemas_tecnicos}
-        onChange={handleChange}
-        isOptional={true}
-        error={errors.otros_problemas_tecnicos}
-      />,
-      <RatingSelector
-        start={1}
-        end={5}
-        label="En una escala del 1 al 5, ¿qué tan rápido y eficiente se solucionaron los problemas técnicos durante las clases? Marcar solamente si hubo problemas técnicos."
-        colorType="default"
-        selectedValue={String(
-          formData.eficiencia_solucion_problemas_tecnicos || 0
-        )}
-        onChange={handleChange}
-        error={errors.eficiencia_solucion_problemas_tecnicos}
-        isOptional={true}
-        name="eficiencia_solucion_problemas_tecnicos"
-      />,
-      <InputField
-        key="gusto_de_clases"
-        label="¿Qué es lo que más le gustó de nuestras clases en las últimas dos semanas?"
-        name="gusto_de_clases"
-        value={formData.gusto_de_clases}
-        onChange={handleChange}
-        error={errors.gusto_de_clases}
-      />,
-      <InputField
-        key="mejoras_clases"
-        label="¿Qué aspectos cree que podríamos mejorar en nuestras clases?"
-        name="mejoras_clases"
-        value={formData.mejoras_clases}
-        onChange={handleChange}
-        error={errors.mejoras_clases}
+        error={errors.area}
       />,
       <RatingSelector
         start={0}
         end={10}
-        label="En una escala del 0 al 10, que tanto recomendaria a otro(a) profesor(a) trabajar con CTC?"
-        colorType="nps"
-        selectedValue={String(formData.nps || 0)}
+        label="¿Qué tan precisos consideras que son los datos presentados en los dashboards y consultas?"
+        colorType="gradient"
+        selectedValue={String(formData.data_quality || 0)}
         onChange={handleChange}
-        error={errors.nps}
-        name="nps"
+        error={errors.data_quality}
+        name="data_quality"
       />,
       <RatingSelector
         start={0}
         end={10}
-        label="En una escala del 0 al 10, que tan satisfecho(a) se encuentra trabajando con CTC?"
+        label="¿Qué tan relevantes son los datos proporcionados por el team de DATA para la toma de decisiones?"
+        colorType="gradient"
+        selectedValue={String(formData.data_business || 0)}
+        onChange={handleChange}
+        error={errors.data_business}
+        name="data_business"
+      />,
+      <RatingSelector
+        start={0}
+        end={10}
+        label="¿Qué tan fácil te resulta interpretar y utilizar los dashboards creados por el team de DATA?"
+        colorType="gradient"
+        selectedValue={String(formData.ces || 0)}
+        onChange={handleChange}
+        error={errors.ces}
+        name="ces"
+      />,
+      <RatingSelector
+        start={0}
+        end={10}
+        label="¿Qué tan satisfecho estas con el entregable de tus solicitudes?"
         colorType="gradient"
         selectedValue={String(formData.csat || 0)}
         onChange={handleChange}
         error={errors.csat}
         name="csat"
+      />,
+      <RadioGroup
+        key="otd"
+        label="Se cumplio el plazo de entrega acordado?"
+        options={otdOptions}
+        name="otd"
+        selectedValue={formData.otd}
+        onChange={handleChange}
+        error={errors.otd}
+      />,
+      <RatingSelector
+        start={0}
+        end={10}
+        label="¿Qué tan bien comunica el team de DATA los resultados y análisis?"
+        colorType="gradient"
+        selectedValue={String(formData.comunicacion || 0)}
+        onChange={handleChange}
+        error={errors.comunicacion}
+        name="comunicacion"
+      />,
+      <InputField
+        key="comentarios_generales"
+        label="¿Qué sugerencias tienes para que el team de DATA mejore sus servicios?"
+        name="comentarios_generales"
+        value={formData.comentarios_generales}
+        onChange={handleChange}
+        placeholder=""
+        error={errors.comentarios_generales}
+      />,
+      <RatingSelector
+        start={0}
+        end={10}
+        label="Como calificaria en su totalidad el desarrollo de la tarea?"
+        colorType="gradient"
+        selectedValue={String(formData.avg_rating || 0)}
+        onChange={handleChange}
+        error={errors.avg_rating}
+        name="avg_rating"
+      />,
+      <RatingSelector
+        start={0}
+        end={10}
+        label="Recomendaria a otra area solicitar entregables a data?"
+        colorType="nps"
+        selectedValue={String(formData.nps || 0)}
+        onChange={handleChange}
+        error={errors.nps}
+        name="nps"
       />,
     ],
   ];
@@ -329,7 +338,7 @@ function Form() {
         <div className="text-white text-center flex flex-col gap-2">
           <Lottie animationData={check} loop={false} className="h-20" />
           {successMessage}
-          <p className="font-semibold">Saludos, Crack The Code.</p>
+          <p className="font-semibold">Saludos, Team de DATA CTC.</p>
         </div>
       ) : (
         <form
