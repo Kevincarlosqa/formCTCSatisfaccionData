@@ -299,7 +299,7 @@ function Form() {
       <RatingSelector
         start={0}
         end={10}
-        label="En una escala de 0 a 10, ¿Qué tan precisos consideras que son los datos presentados en los dashboards y consultas?"
+        label="En una escala de 0 a 10, ¿qué tan precisos consideras que son los datos presentados en los dashboards y consultas?"
         colorType="default"
         selectedValue={String(formData.data_quality || 0)}
         onChange={handleChange}
@@ -309,7 +309,7 @@ function Form() {
       <RatingSelector
         start={0}
         end={10}
-        label="En una escala de 0 a 10, ¿Qué tan relevantes son los datos proporcionados por el team de DATA para la toma de decisiones?"
+        label="En una escala de 0 a 10, ¿qué tan relevantes son los datos proporcionados por el team de DATA para la toma de decisiones?"
         colorType="default"
         selectedValue={String(formData.data_business || 0)}
         onChange={handleChange}
@@ -319,7 +319,7 @@ function Form() {
       <RatingSelector
         start={0}
         end={10}
-        label="En una escala de 0 a 10, ¿Qué tan fácil te resulta interpretar y utilizar los dashboards creados por el team de DATA?"
+        label="En una escala de 0 a 10, ¿qué tan fácil te resulta interpretar y utilizar los dashboards creados por el team de DATA?"
         colorType="default"
         selectedValue={String(formData.ces || 0)}
         onChange={handleChange}
@@ -329,7 +329,7 @@ function Form() {
       <RatingSelector
         start={0}
         end={10}
-        label="En una escala de 0 a 10, ¿Qué tan satisfecho estas con el entregable?"
+        label="En una escala de 0 a 10, ¿qué tan satisfecho estas con el entregable?"
         colorType="gradient"
         selectedValue={String(formData.csat || 0)}
         onChange={handleChange}
@@ -348,7 +348,7 @@ function Form() {
       <RatingSelector
         start={0}
         end={10}
-        label="En una escala de 0 a 10, ¿Qué tan buena fue la comunicacion vinculada a este entregable con el team de DATA?"
+        label="En una escala de 0 a 10, ¿qué tan buena fue la comunicacion vinculada a este entregable con el team de DATA?"
         colorType="default"
         selectedValue={String(formData.comunicacion || 0)}
         onChange={handleChange}
@@ -365,7 +365,7 @@ function Form() {
       />,
       <InputField
         key="sugerencias"
-        label="¿Qué sugerencias tienes para que el team de DATA mejore sus servicios?"
+        label="¿qué sugerencias tienes para que el team de DATA mejore sus servicios?"
         name="sugerencias"
         value={formData.sugerencias}
         onChange={handleChange}
