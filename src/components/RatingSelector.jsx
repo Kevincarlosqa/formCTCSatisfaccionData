@@ -31,7 +31,7 @@ const RatingSelector = ({
     } else if (type === "gradient") {
       const colorStops = [
         "rgba(255, 99, 71, 0.9)", // Red
-        "rgba(255, 255, 20, 0.75)", // Yellow
+        "rgba(255, 120, 20, 0.75)", // Yellow
         "rgba(144, 255, 100, 0.8)", // Green
       ];
       const segments = colorStops.length - 1;
