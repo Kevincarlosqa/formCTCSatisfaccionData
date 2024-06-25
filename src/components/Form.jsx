@@ -99,28 +99,52 @@ function Form({ handleFormSubmit }) {
   ];
   const tipoEntregaOptions = [
     {
-      label: "Query",
-      value: "Query",
+      label: "Dashboard de Asistencia B2B",
+      value: "Dashboard de Asistencia B2B",
     },
     {
-      label: "Dashboard interno",
-      value: "Dashboard interno",
+      label: "Dashboard de Calificaciones B2B",
+      value: "Dashboard de Calificaciones B2B",
     },
     {
-      label: "Dashboard externo",
-      value: "Dashboard externo",
+      label: "Dashboard de Hackatón B2B",
+      value: "Dashboard de Hackatón B2B",
     },
     {
-      label: "Scripts",
-      value: "Scripts",
+      label: "Dashboard de Resumen B2B",
+      value: "Dashboard de Resumen B2B",
+    },
+    {
+      label: "Desarrollo de Dashboard Interno",
+      value: "Desarrollo de Dashboard Interno",
+    },
+    {
+      label: "Desarrollo de Dashboard Externo",
+      value: "Desarrollo de Dashboard Externo",
+    },
+    {
+      label: "Script",
+      value: "Script",
+    },
+    {
+      label: "Reporte",
+      value: "Reporte",
     },
     {
       label: "Formulario",
       value: "Formulario",
     },
     {
-      label: "Reporte",
-      value: "Reporte",
+      label: "Visualización",
+      value: "Visualización",
+    },
+    {
+      label: "Query",
+      value: "Query",
+    },
+    {
+      label: "Ajustes en Backend",
+      value: "Ajustes en Backend",
     },
     {
       label: "Mantenimiento",
