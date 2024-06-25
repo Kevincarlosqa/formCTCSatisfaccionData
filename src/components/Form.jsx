@@ -83,24 +83,16 @@ function Form() {
 
   const trimestreOptions = [
     {
-      label: "Q1 - 2023",
-      value: "Q1 - 2023",
-    },
-    {
-      label: "Q2 - 2023",
-      value: "Q2 - 2023",
-    },
-    {
-      label: "Q3 - 2023",
-      value: "Q3 - 2023",
-    },
-    {
-      label: "Q4 - 2023",
-      value: "Q4 - 2023",
-    },
-    {
       label: "Q1 - 2024",
       value: "Q1 - 2024",
+    },
+    {
+      label: "Q2 - 2024",
+      value: "Q2 - 2024",
+    },
+    {
+      label: "Q3 - 2024",
+      value: "Q3 - 2024",
     },
   ];
   const tipoEntregaOptions = [
@@ -123,6 +115,10 @@ function Form() {
     {
       label: "Reporte",
       value: "Reporte",
+    },
+    {
+      label: "Mantenimiento",
+      value: "Mantenimiento",
     },
   ];
   const areaOptions = [
@@ -157,12 +153,12 @@ function Form() {
   ];
   const equipoOptions = [
     {
-      label: "Ops Profesores",
-      value: "Ops Profesores",
+      label: "Operaciones Profesores",
+      value: "Operaciones Profesores",
     },
     {
-      label: "Ops Proyectos",
-      value: "Ops Proyectos",
+      label: "Operaciones Proyectos",
+      value: "Operaciones Proyectos",
     },
     {
       label: "Académicos",
@@ -299,7 +295,7 @@ function Form() {
       <RatingSelector
         start={0}
         end={10}
-        label="En una escala de 0 a 10, ¿qué tan precisos consideras que son los datos presentados en los dashboards y consultas?"
+        label="En una escala de 0 a 10, ¿qué tan precisos consideras la informacion y datos recibidos?"
         colorType="default"
         selectedValue={String(formData.data_quality || 0)}
         onChange={handleChange}
@@ -309,7 +305,7 @@ function Form() {
       <RatingSelector
         start={0}
         end={10}
-        label="En una escala de 0 a 10, ¿qué tan relevantes son los datos proporcionados por el team de DATA para la toma de decisiones?"
+        label="En una escala de 0 a 10, ¿qué tan relevante es la informacion y datos recibidos para la toma de decisiones?"
         colorType="default"
         selectedValue={String(formData.data_business || 0)}
         onChange={handleChange}
@@ -319,7 +315,7 @@ function Form() {
       <RatingSelector
         start={0}
         end={10}
-        label="En una escala de 0 a 10, ¿qué tan fácil te resulta interpretar y utilizar los dashboards creados por el team de DATA?"
+        label="En una escala de 0 a 10, ¿qué tan fácil le resulta interpretar y utilizar el entregable recibido?"
         colorType="default"
         selectedValue={String(formData.ces || 0)}
         onChange={handleChange}
@@ -356,7 +352,7 @@ function Form() {
         name="comunicacion"
       />,
       <RadioGroup
-        label="¿El problema que origino su pedido, quedo resuelto?"
+        label="¿El problema que originó su pedido, quedo resuelto?"
         options={problema_resueltoOptions}
         name="problema_resuelto"
         selectedValue={formData.problema_resuelto}
