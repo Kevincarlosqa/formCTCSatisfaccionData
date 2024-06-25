@@ -73,7 +73,7 @@ function Form({ handleFormSubmit }) {
       );
       console.log(response.data);
       setSuccessMessage(
-        `¡Gracias por su respuesta! Su opinion es muy valiosa para nosotros.`
+        `¡Gracias por su respuesta! Su opinión es muy valiosa para nosotros.`
       );
       handleFormSubmit();
       setErrorMessage("");
