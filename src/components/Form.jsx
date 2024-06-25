@@ -8,7 +8,7 @@ import Select from "./Select";
 import InputField from "./InputField";
 import RadioGroup from "./RadioGroup";
 
-function Form() {
+function Form({ handleFormSubmit }) {
   const [formData, setFormData] = useState({
     nombre_completo: "",
     trimestre: "",
@@ -25,6 +25,7 @@ function Form() {
     sugerencias: "",
     avg_rating: "",
     nps: "",
+    csat: "",
   });
   const [currentPage, setCurrentPage] = useState(0);
   const [successMessage, setSuccessMessage] = useState("");
@@ -72,8 +73,9 @@ function Form() {
       );
       console.log(response.data);
       setSuccessMessage(
-        `¡Gracias por tus respuestas! Tu opinión es muy valiosa para nosotros y nos ayudará a mejorar continuamente los procesos en el Team de Data. Apreciamos tu tiempo y esfuerzo al completar esta encuesta.`
+        `¡Gracias por su respuesta! Su opinion es muy valiosa para nosotros.`
       );
+      handleFormSubmit();
       setErrorMessage("");
     } catch (error) {
       console.error("Error al enviar los datos:", error);
@@ -232,11 +234,11 @@ function Form() {
     [
       <InputField
         key="nombre_completo"
-        label="Nombre y Apellido"
+        label="Nombre y apellido"
         name="nombre_completo"
         value={formData.nombre_completo}
         onChange={handleChange}
-        placeholder="Ingrese su Nombre Completo"
+        placeholder="Ingrese su nombre completo"
         error={errors.nombre_completo}
       />,
       <Select
@@ -252,7 +254,7 @@ function Form() {
       />,
       <InputField
         key="nombre_entregable"
-        label="Nombre de la Entrega"
+        label="Nombre de la entrega"
         name="nombre_entregable"
         value={formData.nombre_entregable}
         onChange={handleChange}
@@ -261,12 +263,12 @@ function Form() {
       />,
       <Select
         key="tipo_entrega"
-        label="Tipo de Entrega"
+        label="Tipo de entrega"
         name="tipo_entrega"
         options={tipoEntregaOptions}
         value={formData.tipo_entrega}
         onChange={handleChange}
-        placeholder="Seleccione el tipo de Entrega"
+        placeholder="Seleccione el tipo de entrega"
         isOptional={false}
         error={errors.tipo_entrega}
       />,
@@ -277,7 +279,7 @@ function Form() {
         options={areaOptions}
         value={formData.area}
         onChange={handleChange}
-        placeholder="Seleccione su Área"
+        placeholder="Seleccione su área"
         isOptional={false}
         error={errors.area}
       />,
@@ -288,14 +290,14 @@ function Form() {
         options={equipoOptions}
         value={formData.equipo}
         onChange={handleChange}
-        placeholder="Seleccione su Equipo"
+        placeholder="Seleccione su equipo"
         isOptional={false}
         error={errors.equipo}
       />,
       <RatingSelector
         start={0}
         end={10}
-        label="En una escala de 0 a 10, ¿qué tan precisos consideras la informacion y datos recibidos?"
+        label="En una escala de 0 a 10, ¿qué tan precisos consideras la información y datos recibidos?"
         colorType="default"
         selectedValue={String(formData.data_quality || 0)}
         onChange={handleChange}
@@ -305,7 +307,7 @@ function Form() {
       <RatingSelector
         start={0}
         end={10}
-        label="En una escala de 0 a 10, ¿qué tan relevante es la informacion y datos recibidos para la toma de decisiones?"
+        label="En una escala de 0 a 10, ¿qué tan relevante es la información y datos recibidos para la toma de decisiones?"
         colorType="default"
         selectedValue={String(formData.data_business || 0)}
         onChange={handleChange}
@@ -325,7 +327,7 @@ function Form() {
       <RatingSelector
         start={0}
         end={10}
-        label="En una escala de 0 a 10, ¿qué tan satisfecho estas con el entregable?"
+        label="En una escala de 0 a 10, ¿qué tan satisfecho se encuentra con el entregable?"
         colorType="gradient"
         selectedValue={String(formData.csat || 0)}
         onChange={handleChange}
@@ -344,7 +346,7 @@ function Form() {
       <RatingSelector
         start={0}
         end={10}
-        label="En una escala de 0 a 10, ¿qué tan buena fue la comunicacion vinculada a este entregable con el team de DATA?"
+        label="En una escala de 0 a 10, ¿qué tan buena fue la comunicación vinculada a este entregable con el equipo de data?"
         colorType="default"
         selectedValue={String(formData.comunicacion || 0)}
         onChange={handleChange}
@@ -352,7 +354,7 @@ function Form() {
         name="comunicacion"
       />,
       <RadioGroup
-        label="¿El problema que originó su pedido, quedo resuelto?"
+        label="El problema que originó su pedido, ¿quedó resuelto?"
         options={problema_resueltoOptions}
         name="problema_resuelto"
         selectedValue={formData.problema_resuelto}
@@ -361,7 +363,7 @@ function Form() {
       />,
       <InputField
         key="sugerencias"
-        label="¿qué sugerencias tienes para que el team de DATA mejore sus servicios?"
+        label="¿Qué sugerencia tiene para que el equipo de data mejore sus servicios?"
         name="sugerencias"
         value={formData.sugerencias}
         onChange={handleChange}
@@ -372,7 +374,7 @@ function Form() {
       <RatingSelector
         start={0}
         end={10}
-        label="En una escala de 0 a 10, ¿Cómo calificaría en su totalidad el desarrollo de la tarea?"
+        label="En una escala de 0 a 10, ¿cómo calificaría en su totalidad el desarrollo de la tarea?"
         colorType="default"
         selectedValue={String(formData.avg_rating || 0)}
         onChange={handleChange}
@@ -382,7 +384,7 @@ function Form() {
       <RatingSelector
         start={0}
         end={10}
-        label="En una escala de 0 a 10, ¿Recomendaría a otra área solicitar entregables a data?"
+        label="En una escala de 0 a 10, ¿recomendaría a otra área solicitar entregables a data?"
         colorType="nps"
         selectedValue={String(formData.nps || 0)}
         onChange={handleChange}
@@ -449,7 +451,7 @@ function Form() {
         <div className="text-white text-center flex flex-col gap-2">
           <Lottie animationData={check} loop={false} className="h-20" />
           {successMessage}
-          <p className="font-semibold">Saludos, Team de DATA CTC.</p>
+          <p className="font-semibold">Saludos, el equipo de data de CTC.</p>
         </div>
       ) : (
         <form

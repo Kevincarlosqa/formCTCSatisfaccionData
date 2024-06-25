@@ -27,19 +27,16 @@ function App() {
         />
         <div className="mx-auto relative  mt-[-150px] ">
           <p className="text-white text-xl sm:text-2xl md:text-3xl font-bold text-center mb-4 sm:mb-6 md:mb-10">
-            Formulario de Satisfacción Team de Data 📝
+            Formulario de Satisfacción
+            <p>Equipo de Data ⛁</p>
           </p>
-          {/* {!formSubmitted && (
+          {!formSubmitted && (
             <p className="text-white text-lg sm:text-xl md:text-sm text-center mb-4 sm:mb-6 md:mb-10 max-w-full sm:max-w-lg md:max-w-2xl mx-auto px-4 sm:px-6 md:px-8">
-              ¡Hola! Este cuestionario nos permitirá obtener información para
-              conocerte un poco más, entender mejor tus intereses, preparación y
-              metas para el futuro, ya sea continuar con tu educación o ingresar
-              al mercado laboral. Tus respuestas son importantes y
-              confidenciales; por eso, te invitamos a leer con calma, contestar
-              de manera honesta y a consultarle a tu profesor o profesora si
-              tienes alguna pregunta.
+              ¡Hola! Este cuestionario nos permite mejorar como equipo.
+              Valoramos su honestidad y criterio. Ante cualquier duda contacte
+              al equipo de data de Crack The Code.
             </p>
-          )} */}
+          )}
           <Form handleFormSubmit={handleFormSubmit} />
           <img
             src={logo}
