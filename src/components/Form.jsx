@@ -248,7 +248,7 @@ function Form({ handleFormSubmit }) {
         options={trimestreOptions}
         value={formData.trimestre}
         onChange={handleChange}
-        placeholder=""
+        placeholder="Seleccione el trimestre correspondiente a la entrega"
         isOptional={false}
         error={errors.trimestre}
       />,
@@ -258,7 +258,7 @@ function Form({ handleFormSubmit }) {
         name="nombre_entregable"
         value={formData.nombre_entregable}
         onChange={handleChange}
-        placeholder=""
+        placeholder="Ingrese el nombre de la entrega"
         error={errors.nombre_entregable}
       />,
       <Select
@@ -361,16 +361,6 @@ function Form({ handleFormSubmit }) {
         onChange={handleChange}
         error={errors.problema_resuelto}
       />,
-      <InputField
-        key="sugerencias"
-        label="¿Qué sugerencia tiene para que el equipo de data mejore sus servicios?"
-        name="sugerencias"
-        value={formData.sugerencias}
-        onChange={handleChange}
-        placeholder=""
-        error={errors.sugerencias}
-        isOptional={true}
-      />,
       <RatingSelector
         start={0}
         end={10}
@@ -390,6 +380,16 @@ function Form({ handleFormSubmit }) {
         onChange={handleChange}
         error={errors.nps}
         name="nps"
+      />,
+      <InputField
+        key="sugerencias"
+        label="¿Qué sugerencia tiene para que el equipo de data mejore sus servicios?"
+        name="sugerencias"
+        value={formData.sugerencias}
+        onChange={handleChange}
+        placeholder=""
+        error={errors.sugerencias}
+        isOptional={true}
       />,
     ],
   ];
