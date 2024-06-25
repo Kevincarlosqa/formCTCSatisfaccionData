@@ -292,7 +292,7 @@ function Form() {
         options={equipoOptions}
         value={formData.equipo}
         onChange={handleChange}
-        placeholder="Seleccione su equipo"
+        placeholder="Seleccione su Equipo"
         isOptional={false}
         error={errors.equipo}
       />,
