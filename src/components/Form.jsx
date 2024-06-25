@@ -135,8 +135,8 @@ function Form() {
       value: "Producto",
     },
     {
-      label: "Innovacion",
-      value: "Innovacion",
+      label: "Innovación",
+      value: "Innovación",
     },
     {
       label: "Ventas",
@@ -151,8 +151,8 @@ function Form() {
       value: "Recursos Humanos",
     },
     {
-      label: "Administracion y Finanzas",
-      value: "Administracion y Finanzas",
+      label: "Administración y Finanzas",
+      value: "Administración y Finanzas",
     },
   ];
   const equipoOptions = [
@@ -165,20 +165,20 @@ function Form() {
       value: "Ops Proyectos",
     },
     {
-      label: "Academicos",
-      value: "Academicos",
+      label: "Académicos",
+      value: "Académicos",
     },
     {
-      label: "Innovacion",
-      value: "Innovacion",
+      label: "Innovación",
+      value: "Innovación",
     },
     {
-      label: "Tecnologia",
-      value: "Tecnologia",
+      label: "Tecnología",
+      value: "Tecnología",
     },
     {
-      label: "Apropiacion",
-      value: "Apropiacion",
+      label: "Apropiación",
+      value: "Apropiación",
     },
     {
       label: "Ventas",
@@ -193,16 +193,16 @@ function Form() {
       value: "Recursos Humanos",
     },
     {
-      label: "Administracion",
-      value: "Administracion",
+      label: "Administración",
+      value: "Administración",
     },
     {
       label: "Finanzas",
       value: "Finanzas",
     },
     {
-      label: "Atencion al Cliente",
-      value: "Atencion al Cliente",
+      label: "Atención al Cliente",
+      value: "Atención al Cliente",
     },
     {
       label: "Experiencia de Usuario",
