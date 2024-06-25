@@ -103,8 +103,12 @@ function Form({ handleFormSubmit }) {
       value: "Query",
     },
     {
-      label: "Dashboard",
-      value: "Dashboard",
+      label: "Dashboard interno",
+      value: "Dashboard interno",
+    },
+    {
+      label: "Dashboard externo",
+      value: "Dashboard externo",
     },
     {
       label: "Scripts",
@@ -124,6 +128,10 @@ function Form({ handleFormSubmit }) {
     },
   ];
   const areaOptions = [
+    {
+      label: "Ejecutivo",
+      value: "Ejecutivo",
+    },
     {
       label: "Operaciones",
       value: "Operaciones",
@@ -154,6 +162,10 @@ function Form({ handleFormSubmit }) {
     },
   ];
   const equipoOptions = [
+    {
+      label: "Ejecutivo",
+      value: "Ejecutivo",
+    },
     {
       label: "Operaciones Profesores",
       value: "Operaciones Profesores",
