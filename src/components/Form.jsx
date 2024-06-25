@@ -58,8 +58,8 @@ function Form() {
     try {
       const response = await axios.post(
         //DESCOMENTAR SOLO EL PRIMERO PARA PRODUCCION
-        // "api/v1/db/data/v1/crack_sheets/satisfaccion_data",
-        "http://localhost:8010/proxy",
+        "api/v1/db/data/v1/crack_sheets/satisfaccion_data",
+        // "http://localhost:8010/proxy",
         formData,
         {
           headers: {
