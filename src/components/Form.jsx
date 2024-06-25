@@ -26,6 +26,7 @@ function Form({ handleFormSubmit }) {
     avg_rating: "",
     nps: "",
     csat: "",
+    CreatedAt: "",
   });
   const [currentPage, setCurrentPage] = useState(0);
   const [successMessage, setSuccessMessage] = useState("");
@@ -61,7 +62,10 @@ function Form({ handleFormSubmit }) {
         //DESCOMENTAR SOLO EL PRIMERO PARA PRODUCCION
         "api/v1/db/data/v1/crack_sheets/satisfaccion_data",
         // "http://localhost:8010/proxy",
-        formData,
+        {
+          ...formData,
+          CreatedAt: new Date().toISOString().slice(0, 16).replace("T", " "),
+        },
         {
           headers: {
             "Content-Type": "application/json",
