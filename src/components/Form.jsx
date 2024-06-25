@@ -10,20 +10,21 @@ import RadioGroup from "./RadioGroup";
 
 function Form() {
   const [formData, setFormData] = useState({
-    nombre_stakeholder: "",
-    quarter_year: "",
+    nombre_completo: "",
+    trimestre: "",
     tipo_entrega: "",
     nombre_entregable: "",
     area: "",
+    equipo: "",
+    problema_resuelto: "",
     data_quality: "",
     data_business: "",
     ces: "",
     otd: "",
     comunicacion: "",
-    comentarios_generales: "",
+    sugerencias: "",
     avg_rating: "",
     nps: "",
-    projectId: 19,
   });
   const [currentPage, setCurrentPage] = useState(0);
   const [successMessage, setSuccessMessage] = useState("");
@@ -43,7 +44,7 @@ function Form() {
     // }));
   };
 
-  const optionalFields = ["otros_problemas_tecnicos"];
+  const optionalFields = ["sugerencias"];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -80,7 +81,7 @@ function Form() {
     }
   };
 
-  const quarterYearOptions = [
+  const trimestreOptions = [
     {
       label: "Q1 - 2023",
       value: "Q1 - 2023",
@@ -111,6 +112,18 @@ function Form() {
       label: "Dashboard",
       value: "Dashboard",
     },
+    {
+      label: "Scripts",
+      value: "Scripts",
+    },
+    {
+      label: "Formulario",
+      value: "Formulario",
+    },
+    {
+      label: "Reporte",
+      value: "Reporte",
+    },
   ];
   const areaOptions = [
     {
@@ -118,12 +131,90 @@ function Form() {
       value: "Operaciones",
     },
     {
-      label: "Calidad LX",
-      value: "Calidad LX",
+      label: "Producto",
+      value: "Producto",
+    },
+    {
+      label: "Innovacion",
+      value: "Innovacion",
+    },
+    {
+      label: "Ventas",
+      value: "Ventas",
+    },
+    {
+      label: "Marketing",
+      value: "Marketing",
+    },
+    {
+      label: "Recursos Humanos",
+      value: "Recursos Humanos",
+    },
+    {
+      label: "Administracion y Finanzas",
+      value: "Administracion y Finanzas",
+    },
+  ];
+  const equipoOptions = [
+    {
+      label: "Ops Profesores",
+      value: "Ops Profesores",
+    },
+    {
+      label: "Ops Proyectos",
+      value: "Ops Proyectos",
+    },
+    {
+      label: "Academicos",
+      value: "Academicos",
+    },
+    {
+      label: "Innovacion",
+      value: "Innovacion",
+    },
+    {
+      label: "Tecnologia",
+      value: "Tecnologia",
+    },
+    {
+      label: "Apropiacion",
+      value: "Apropiacion",
+    },
+    {
+      label: "Ventas",
+      value: "Ventas",
+    },
+    {
+      label: "Marketing",
+      value: "Marketing",
+    },
+    {
+      label: "Recursos Humanos",
+      value: "Recursos Humanos",
+    },
+    {
+      label: "Administracion",
+      value: "Administracion",
+    },
+    {
+      label: "Finanzas",
+      value: "Finanzas",
+    },
+    {
+      label: "Atencion al Cliente",
+      value: "Atencion al Cliente",
+    },
+    {
+      label: "Experiencia de Usuario",
+      value: "Experiencia de Usuario",
     },
     {
       label: "Producto",
       value: "Producto",
+    },
+    {
+      label: "Diseño",
+      value: "Diseño",
     },
   ];
   const otdOptions = [
@@ -136,28 +227,41 @@ function Form() {
       value: "No",
     },
   ];
+  const problema_resueltoOptions = [
+    { value: "Si", label: "Si" },
+    { value: "No", label: "No" },
+  ];
 
   const pages = [
     [
       <InputField
-        key="nombre_stakeholder"
-        label="Ingrese su Nombre y Apellido"
-        name="nombre_stakeholder"
-        value={formData.nombre_stakeholder}
+        key="nombre_completo"
+        label="Nombre y Apellido"
+        name="nombre_completo"
+        value={formData.nombre_completo}
         onChange={handleChange}
         placeholder="Ingrese su Nombre Completo"
-        error={errors.nombre_stakeholder}
+        error={errors.nombre_completo}
       />,
       <Select
-        key="quarter_year"
-        label="Quarter - Year"
-        name="quarter_year"
-        options={quarterYearOptions}
-        value={formData.quarter_year}
+        key="trimestre"
+        label="Trimestre"
+        name="trimestre"
+        options={trimestreOptions}
+        value={formData.trimestre}
         onChange={handleChange}
         placeholder=""
         isOptional={false}
-        error={errors.quarter_year}
+        error={errors.trimestre}
+      />,
+      <InputField
+        key="nombre_entregable"
+        label="Nombre de la Entrega"
+        name="nombre_entregable"
+        value={formData.nombre_entregable}
+        onChange={handleChange}
+        placeholder=""
+        error={errors.nombre_entregable}
       />,
       <Select
         key="tipo_entrega"
@@ -170,31 +274,33 @@ function Form() {
         isOptional={false}
         error={errors.tipo_entrega}
       />,
-      <InputField
-        key="nombre_entregable"
-        label="Nombre de la Entrega"
-        name="nombre_entregable"
-        value={formData.nombre_entregable}
-        onChange={handleChange}
-        placeholder="Ingrese el Nombre del Entregable"
-        error={errors.nombre_entregable}
-      />,
       <Select
         key="area"
-        label="Escoja su Area"
+        label="Área"
         name="area"
         options={areaOptions}
         value={formData.area}
         onChange={handleChange}
-        placeholder="Seleccione su Area"
+        placeholder="Seleccione su Área"
         isOptional={false}
         error={errors.area}
+      />,
+      <Select
+        key="equipo"
+        label="Equipo"
+        name="equipo"
+        options={equipoOptions}
+        value={formData.equipo}
+        onChange={handleChange}
+        placeholder="Seleccione su equipo"
+        isOptional={false}
+        error={errors.equipo}
       />,
       <RatingSelector
         start={0}
         end={10}
-        label="¿Qué tan precisos consideras que son los datos presentados en los dashboards y consultas?"
-        colorType="gradient"
+        label="En una escala de 0 a 10, ¿Qué tan precisos consideras que son los datos presentados en los dashboards y consultas?"
+        colorType="default"
         selectedValue={String(formData.data_quality || 0)}
         onChange={handleChange}
         error={errors.data_quality}
@@ -203,8 +309,8 @@ function Form() {
       <RatingSelector
         start={0}
         end={10}
-        label="¿Qué tan relevantes son los datos proporcionados por el team de DATA para la toma de decisiones?"
-        colorType="gradient"
+        label="En una escala de 0 a 10, ¿Qué tan relevantes son los datos proporcionados por el team de DATA para la toma de decisiones?"
+        colorType="default"
         selectedValue={String(formData.data_business || 0)}
         onChange={handleChange}
         error={errors.data_business}
@@ -213,8 +319,8 @@ function Form() {
       <RatingSelector
         start={0}
         end={10}
-        label="¿Qué tan fácil te resulta interpretar y utilizar los dashboards creados por el team de DATA?"
-        colorType="gradient"
+        label="En una escala de 0 a 10, ¿Qué tan fácil te resulta interpretar y utilizar los dashboards creados por el team de DATA?"
+        colorType="default"
         selectedValue={String(formData.ces || 0)}
         onChange={handleChange}
         error={errors.ces}
@@ -223,7 +329,7 @@ function Form() {
       <RatingSelector
         start={0}
         end={10}
-        label="¿Qué tan satisfecho estas con el entregable de tus solicitudes?"
+        label="En una escala de 0 a 10, ¿Qué tan satisfecho estas con el entregable?"
         colorType="gradient"
         selectedValue={String(formData.csat || 0)}
         onChange={handleChange}
@@ -232,7 +338,7 @@ function Form() {
       />,
       <RadioGroup
         key="otd"
-        label="Se cumplio el plazo de entrega acordado?"
+        label="¿Se cumplió el plazo de entrega acordado?"
         options={otdOptions}
         name="otd"
         selectedValue={formData.otd}
@@ -242,27 +348,36 @@ function Form() {
       <RatingSelector
         start={0}
         end={10}
-        label="¿Qué tan bien comunica el team de DATA los resultados y análisis?"
-        colorType="gradient"
+        label="En una escala de 0 a 10, ¿Qué tan buena fue la comunicacion vinculada a este entregable con el team de DATA?"
+        colorType="default"
         selectedValue={String(formData.comunicacion || 0)}
         onChange={handleChange}
         error={errors.comunicacion}
         name="comunicacion"
       />,
+      <RadioGroup
+        label="¿El problema que origino su pedido, quedo resuelto?"
+        options={problema_resueltoOptions}
+        name="problema_resuelto"
+        selectedValue={formData.problema_resuelto}
+        onChange={handleChange}
+        error={errors.problema_resuelto}
+      />,
       <InputField
-        key="comentarios_generales"
+        key="sugerencias"
         label="¿Qué sugerencias tienes para que el team de DATA mejore sus servicios?"
-        name="comentarios_generales"
-        value={formData.comentarios_generales}
+        name="sugerencias"
+        value={formData.sugerencias}
         onChange={handleChange}
         placeholder=""
-        error={errors.comentarios_generales}
+        error={errors.sugerencias}
+        isOptional={true}
       />,
       <RatingSelector
         start={0}
         end={10}
-        label="Como calificaria en su totalidad el desarrollo de la tarea?"
-        colorType="gradient"
+        label="En una escala de 0 a 10, ¿Cómo calificaría en su totalidad el desarrollo de la tarea?"
+        colorType="default"
         selectedValue={String(formData.avg_rating || 0)}
         onChange={handleChange}
         error={errors.avg_rating}
@@ -271,7 +386,7 @@ function Form() {
       <RatingSelector
         start={0}
         end={10}
-        label="Recomendaria a otra area solicitar entregables a data?"
+        label="En una escala de 0 a 10, ¿Recomendaría a otra área solicitar entregables a data?"
         colorType="nps"
         selectedValue={String(formData.nps || 0)}
         onChange={handleChange}
