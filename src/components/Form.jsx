@@ -188,6 +188,14 @@ function Form({ handleFormSubmit }) {
       label: "Administración y Finanzas",
       value: "Administración y Finanzas",
     },
+    {
+      label: "Servicio al Cliente",
+      value: "Servicio al Cliente",
+    },
+    {
+      label: "Diseño",
+      value: "Diseño",
+    },
   ];
   const equipoOptions = [
     {
