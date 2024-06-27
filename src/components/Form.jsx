@@ -196,6 +196,10 @@ function Form({ handleFormSubmit }) {
       label: "Diseño",
       value: "Diseño",
     },
+    {
+      label: "Académicos",
+      value: "Académicos",
+    },
   ];
   const equipoOptions = [
     {
